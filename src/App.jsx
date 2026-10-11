@@ -5,6 +5,11 @@ import Menu from './components/Menu.jsx';
 import OrderForm from './components/OrderForm.jsx';
 import Contact from './components/Contact.jsx';
 import Footer from './components/Footer.jsx';
+import Intro from './components/Intro.jsx';
+import Announcements from './components/Announcements.jsx';
+
+const introSeen = () => { try { return sessionStorage.getItem('cb-intro') === '1'; } catch { return false; } };
+const reducedMotion = () => window.matchMedia?.('(prefers-reduced-motion: reduce)').matches;
 
 const PAGES = ['home', 'menu', 'order', 'contact'];
 const readHash = () => {
@@ -15,6 +20,7 @@ const readHash = () => {
 export default function App() {
   const [page, setPage] = useState(readHash);
   const [preselect, setPreselect] = useState(null); // {category?, design?}
+  const [showIntro, setShowIntro] = useState(() => !introSeen() && !reducedMotion());
   const [online, setOnline] = useState(navigator.onLine);
 
   useEffect(() => {
@@ -31,18 +37,21 @@ export default function App() {
     };
   }, []);
 
+  const finishIntro = () => { try { sessionStorage.setItem('cb-intro', '1'); } catch { /* ignore */ } setShowIntro(false); };
+
   const go = (p, pre = null) => { setPreselect(pre); window.location.hash = `#/${p}`; };
 
   return (
     <div className="app">
-      <div className="bg-blobs" aria-hidden="true"><span /><span /><span /></div>
+      {showIntro && <Intro onDone={finishIntro} />}
+      <Announcements />
       <Header page={page} go={go} />
-      {!online && <div className="offline-banner glass">You’re offline – browsing the menu still works. Reconnect to send your order.</div>}
+      {!online && <div className="offline-banner">You’re offline – browsing the menu still works. Reconnect to send your order.</div>}
       <main>
         {page === 'home' && <Home go={go} />}
-        {page === 'menu' && <Menu go={go} />}
-        {page === 'order' && <OrderForm preselect={preselect} />}
-        {page === 'contact' && <Contact />}
+        {page === 'menu' && <div className="container"><Menu go={go} /></div>}
+        {page === 'order' && <div className="container"><OrderForm preselect={preselect} /></div>}
+        {page === 'contact' && <div className="container"><Contact /></div>}
       </main>
       <Footer go={go} />
     </div>

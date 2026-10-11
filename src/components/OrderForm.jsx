@@ -49,7 +49,7 @@ export default function OrderForm({ preselect }) {
     <>
       <h1 className="page-title">Place an <span className="gold">Order</span></h1>
       <ExpressNotice />
-      <form className="glass order" onSubmit={submit}>
+      <form className="order" onSubmit={submit}>
         <div className="form-grid">
           <label>Cake type
             <select value={f.category} onChange={(e) => changeCategory(e.target.value)}>
@@ -109,7 +109,7 @@ export default function OrderForm({ preselect }) {
           <textarea rows="3" value={f.notes} onChange={(e) => set('notes', e.target.value)} placeholder="Allergies, delivery, anything else…" />
         </label>
 
-        <div className="total glass">
+        <div className="total">
           <span>Estimated total</span>
           <strong>{CURRENCY}{total}</strong>
         </div>

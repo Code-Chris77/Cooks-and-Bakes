@@ -100,3 +100,19 @@ export const DESIGNS = [
   { code: 'SD7', name: 'Pink Elegance', img: '/designs/sd7.jpg' },
   { code: 'SD8', name: 'Berry Whip', img: '/designs/sd8.jpg' },
 ];
+
+// Announcements shown in the scrolling news bar. Edit `postedAt` (YYYY-MM-DD) when you post a new update.
+export const ANNOUNCEMENTS = [
+  { text: 'Same-Day Express Cakes Available', postedAt: '2026-10-10' },
+  { text: 'New Flavor Launch: Berry Whip', postedAt: '2026-10-08' },
+  { text: 'Holiday Specials – Order Early', postedAt: '2026-10-05' },
+];
+
+export const formatPosted = (iso) =>
+  new Date(`${iso}T00:00:00`).toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' });
+
+export const STORY = [
+  { title: 'Bake', text: 'Every cake is freshly made with cream-rich, moist sponge — baked the same day you need it.', icon: '🥣' },
+  { title: 'Celebrate', text: 'From birthdays to school parties, our designs SD1–SD8 turn any moment into a celebration.', icon: '🎉' },
+  { title: 'Enjoy', text: 'Share it, slice it, savour it. One cake, a table full of smiles.', icon: '🍰' },
+];

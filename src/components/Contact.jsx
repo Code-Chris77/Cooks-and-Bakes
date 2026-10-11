@@ -5,11 +5,11 @@ export default function Contact() {
     <>
       <h1 className="page-title">Get in <span className="gold">Touch</span></h1>
       <div className="grid contact">
-        <article className="glass card hover-lift">
+        <article className="card hover-lift">
           <div className="card-icon">📍</div><h3>Visit us</h3>
           <p>{BUSINESS.location}</p>
         </article>
-        <article className="glass card hover-lift">
+        <article className="card hover-lift">
           <div className="card-icon">📞</div><h3>Call / WhatsApp</h3>
           {BUSINESS.phones.map((p) => (
             <p key={p.local}>
@@ -17,7 +17,7 @@ export default function Contact() {
             </p>
           ))}
         </article>
-        <article className="glass card hover-lift">
+        <article className="card hover-lift">
           <div className="card-icon">💬</div><h3>Follow us</h3>
           <p>
             <a href={BUSINESS.socials.facebook} target="_blank" rel="noopener noreferrer">Facebook</a> ·{' '}

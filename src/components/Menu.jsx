@@ -15,7 +15,7 @@ export default function Menu({ go }) {
 
       <section className="section">
         <h2 className="section-title">Express Cake Designs</h2>
-        <div className="glass size-picker">
+        <div className="size-picker">
           <span className="muted">Pick a size to see price &amp; servings:</span>
           <div className="chips">
             {cream.options.map((o) => (
@@ -26,7 +26,7 @@ export default function Menu({ go }) {
         </div>
         <div className="grid designs">
           {DESIGNS.map((d) => (
-            <article key={d.code} className="glass card design hover-lift">
+            <article key={d.code} className="card design hover-lift">
               <div className="design-img">
                 <img src={d.img} alt={`${d.name} cake`} loading="lazy" />
               </div>
@@ -43,7 +43,7 @@ export default function Menu({ go }) {
         <h2 className="section-title">Price List</h2>
         <div className="grid prices">
           {CATEGORIES.map((c) => (
-            <article key={c.id} className="glass card">
+            <article key={c.id} className="card">
               <h3>{c.icon} {c.name}</h3>
               <ul className="price-list">
                 {c.options.map((o) => (
@@ -64,7 +64,7 @@ export default function Menu({ go }) {
         <h2 className="section-title">How many people a cake feeds</h2>
         <div className="grid serving">
           {Object.values(SIZES).map((s) => (
-            <div key={s.label} className="glass card serving-card hover-lift">
+            <div key={s.label} className="card serving-card hover-lift">
               <strong className="pink">{s.label}</strong>
               <span className="big">{s.serves.replace(' people', '')}</span>
               <small>people</small>
